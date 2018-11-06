@@ -29,7 +29,6 @@ const text = (() => {
     list =   document.querySelectorAll('.item__text');
 
 
-
     // EventListener fyrir delete takka nú þegar til staðar 
     // EventListener fyrir checkbox nú þegar til staðar 
     for ( var i = 0 ; i < check.length; i++){
@@ -46,50 +45,26 @@ const text = (() => {
       if (check[2].checked) item[2].classList.add("item--done");
       else item[2].classList.remove("item--done");
 
-      });}
-
-        
-    
-} 
-
-  
+      });
+    }
+  } 
 
   function formHandler(e) {
     e.preventDefault();
 
     var text = txt.value;
     add(text);
-
-
-  }
-
-  // event handler fyrir það að klára færslu
-  function finish(e) {
-   
   }
 
   // event handler fyrir það að breyta færslu
   function edit(e) {
-  
+    var li = e.target.parentElement;
     this.contentEditable = "true";
-    this.style.textDecoration = "none"; 
     this.addEventListener('keydown', function(e) {
       if(e.keyCode == 13)
-         this.contentEditable="false";
+        this.contentEditable="false";
 
     });
-
-
-    
-    commit(this);
-
-
-  }
-
-  // event handler fyrir það að klára að breyta færslu
-  function commit(e) {
-    finish(this);
-
   }
 
   // fall sem sér um að bæta við nýju item
@@ -146,13 +121,6 @@ const text = (() => {
   function deleteItem(e) {
       var li = e.target.parentElement;
       items.removeChild(li);
-  }
-
-
-
-
-  // hjálparfall til að útbúa element
-  function el(type, className, clickHandler) {
   }
 
   return {
